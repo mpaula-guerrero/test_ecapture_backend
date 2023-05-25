@@ -3,6 +3,8 @@ package api
 import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
+	"test_ecapture_backend/api/rest/handler/sessions_handler"
+	"test_ecapture_backend/api/rest/handler/usuarios_handler"
 
 	"test_ecapture_backend/api/rest/handler/perfiles_handler"
 
@@ -29,6 +31,7 @@ func routes(db *sqlx.DB, loggerHttp bool, allowedOrigins string) *fiber.App {
 	TxID := uuid.New().String()
 
 	perfiles_handler.PerfilesRouter(app, db, TxID)
-
+	usuarios_handler.UsuariosRouter(app, db, TxID)
+	sessions_handler.SessionRouter(app, db, TxID)
 	return app
 }

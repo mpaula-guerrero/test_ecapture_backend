@@ -20,7 +20,7 @@ type Handler struct {
 func (h *Handler) create(c *fiber.Ctx) error {
 	res := PerfilResponse{}
 	m := PerfilRequest{}
-
+	
 	err := c.BodyParser(&m)
 	if err != nil {
 		logger.Error.Printf(h.TxID, "no se pudo leer el Modelo crear perfil: %v", err)
